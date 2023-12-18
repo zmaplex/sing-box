@@ -26,10 +26,10 @@ import (
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-box/outbound"
 	"github.com/sagernet/sing-box/transport/fakeip"
-	"github.com/sagernet/sing-dns"
+	dns "github.com/sagernet/sing-dns"
 	mux "github.com/sagernet/sing-mux"
-	"github.com/sagernet/sing-tun"
-	"github.com/sagernet/sing-vmess"
+	tun "github.com/sagernet/sing-tun"
+	vmess "github.com/sagernet/sing-vmess"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/buf"
 	"github.com/sagernet/sing/common/bufio"
@@ -44,6 +44,9 @@ import (
 	"github.com/sagernet/sing/common/uot"
 	"github.com/sagernet/sing/service"
 	"github.com/sagernet/sing/service/pause"
+
+	// ---------------server pro----------------
+	traffic "github.com/zmaplex/sing-box-extend/edgesystem/traffic"
 )
 
 var _ adapter.Router = (*Router)(nil)
@@ -91,6 +94,7 @@ type Router struct {
 	clashServer                        adapter.ClashServer
 	v2rayServer                        adapter.V2RayServer
 	platformInterface                  platform.Interface
+	trafficManager                     traffic.Manager
 	needWIFIState                      bool
 	needPackageManager                 bool
 	wifiState                          adapter.WIFIState
@@ -600,7 +604,12 @@ func (r *Router) Start() error {
 			return E.Cause(err, "initialize time service")
 		}
 	}
+
+	if trafficManger := service.FromContext[traffic.Manager](r.ctx); trafficManger != nil {
+		r.trafficManager = trafficManger
+	}
 	return nil
+
 }
 
 func (r *Router) Close() error {
@@ -828,6 +837,13 @@ func (r *Router) RouteConnection(ctx context.Context, conn net.Conn, metadata ad
 	if !common.Contains(detour.Network(), N.NetworkTCP) {
 		return E.New("missing supported outbound, closing connection")
 	}
+
+	//  这里开启流量统计
+	if r.trafficManager != nil {
+		conn = r.trafficManager.NewConnWithTrafficStatistics(ctx, conn, metadata.User)
+	}
+	//  流量统计结束
+
 	if r.clashServer != nil {
 		trackerConn, tracker := r.clashServer.RoutedConnection(ctx, conn, metadata, matchedRule)
 		defer tracker.Leave()

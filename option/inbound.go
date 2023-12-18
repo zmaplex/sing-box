@@ -58,6 +58,8 @@ func (h *Inbound) RawOptions() (any, error) {
 		rawOptionsPtr = &h.HysteriaOptions
 	case C.TypeShadowTLS:
 		rawOptionsPtr = &h.ShadowTLSOptions
+	case C.TypeShadowTLSPlus:
+		rawOptionsPtr = &h.ShadowTLSOptions
 	case C.TypeVLESS:
 		rawOptionsPtr = &h.VLESSOptions
 	case C.TypeTUIC:

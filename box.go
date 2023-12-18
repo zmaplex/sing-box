@@ -24,6 +24,9 @@ import (
 	F "github.com/sagernet/sing/common/format"
 	"github.com/sagernet/sing/service"
 	"github.com/sagernet/sing/service/pause"
+
+	traffic "github.com/zmaplex/sing-box-extend/edgesystem/traffic"
+	EU "github.com/zmaplex/sing-box-extend/edgesystem/users"
 )
 
 var _ adapter.Service = (*Box)(nil)
@@ -85,6 +88,13 @@ func New(options Options) (*Box, error) {
 	if err != nil {
 		return nil, E.Cause(err, "create log factory")
 	}
+
+	// 启动流量统计服务
+	ctx = traffic.WithDefault(ctx, logFactory.NewLogger("traffic"))
+
+	// 启动边缘授权
+	ctx = EU.WithDefault(ctx, logFactory.NewLogger("edge-auth"))
+
 	router, err := route.NewRouter(
 		ctx,
 		logFactory,
@@ -182,6 +192,7 @@ func New(options Options) (*Box, error) {
 		router.SetV2RayServer(v2rayServer)
 		preServices2["v2ray api"] = v2rayServer
 	}
+
 	return &Box{
 		router:       router,
 		inbounds:     inbounds,

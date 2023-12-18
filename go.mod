@@ -1,6 +1,6 @@
 module github.com/sagernet/sing-box
 
-go 1.20
+go 1.21.0
 
 require (
 	berty.tech/go-libtor v1.0.385
@@ -42,23 +42,28 @@ require (
 	github.com/sagernet/ws v0.0.0-20231204124109-acfe8907c854
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
+	github.com/zmaplex/sing-box-extend v0.0.0-20231218055927-1af6fa956d01
 	go.uber.org/zap v1.26.0
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba
 	golang.org/x/crypto v0.16.0
 	golang.org/x/net v0.19.0
 	golang.org/x/sys v0.15.0
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20230429144221-925a1e7659e6
-	google.golang.org/grpc v1.59.0
+	google.golang.org/grpc v1.60.0
 	google.golang.org/protobuf v1.31.0
 	howett.net/plist v1.0.1
 )
 
 //replace github.com/sagernet/sing => ../sing
 
+replace github.com/zmaplex/sing-box-extend => ../sing-box-extend
+
 require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/andybalholm/brotli v1.0.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/dustin/go-humanize v1.0.1 // indirect
+	github.com/eclipse/paho.mqtt.golang v1.4.3 // indirect
 	github.com/gaukas/godicttls v0.0.4 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
@@ -66,32 +71,42 @@ require (
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/btree v1.1.2 // indirect
-	github.com/google/pprof v0.0.0-20231101202521-4ca4178f5c7a // indirect
+	github.com/google/pprof v0.0.0-20231212022811-ec68065c825e // indirect
+	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/josharian/native v1.1.0 // indirect
 	github.com/klauspost/compress v1.17.4 // indirect
-	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
+	github.com/klauspost/cpuid/v2 v2.2.6 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/onsi/ginkgo/v2 v2.9.7 // indirect
-	github.com/pierrec/lz4/v4 v4.1.14 // indirect
+	github.com/onsi/ginkgo/v2 v2.13.2 // indirect
+	github.com/pierrec/lz4/v4 v4.1.19 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
 	github.com/sagernet/netlink v0.0.0-20220905062125-8043b4a9aa97 // indirect
-	github.com/scjalliance/comshim v0.0.0-20230315213746-5e51f40bd3b9 // indirect
+	github.com/scjalliance/comshim v0.0.0-20231116235529-bbacf79a4691 // indirect
+	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/u-root/uio v0.0.0-20230220225925-ffce2a382923 // indirect
-	github.com/vishvananda/netns v0.0.0-20211101163701-50045581ed74 // indirect
+	github.com/tidwall/gjson v1.17.0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.1 // indirect
+	github.com/tklauser/go-sysconf v0.3.13 // indirect
+	github.com/tklauser/numcpus v0.7.0 // indirect
+	github.com/u-root/uio v0.0.0-20230305220412-3e8cd9d6bf63 // indirect
+	github.com/vishvananda/netns v0.0.4 // indirect
+	github.com/yusufpapurcu/wmi v1.2.3 // indirect
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/exp v0.0.0-20231214170342-aacd6d4b4611 // indirect
 	golang.org/x/mod v0.14.0 // indirect
+	golang.org/x/sync v0.5.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
-	golang.org/x/tools v0.16.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230822172742-b8732ec3820d // indirect
+	golang.org/x/tools v0.16.1 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20231212172506-995d672761c0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/blake3 v1.2.1 // indirect
