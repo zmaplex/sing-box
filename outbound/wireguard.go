@@ -17,8 +17,8 @@ import (
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-box/transport/wireguard"
-	"github.com/sagernet/sing-dns"
-	"github.com/sagernet/sing-tun"
+	dns "github.com/sagernet/sing-dns"
+	tun "github.com/sagernet/sing-tun"
 	E "github.com/sagernet/sing/common/exceptions"
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
@@ -76,7 +76,7 @@ func NewWireGuard(ctx context.Context, router adapter.Router, logger log.Context
 		if options.GSO && options.Detour != "" {
 			return nil, E.New("gso is conflict with detour")
 		}
-		options.IsWireGuradListener = true
+		options.IsWireGuardListener = true
 		outbound.useStdNetBind = true
 	}
 	listener, err := dialer.New(router, options.DialerOptions)
