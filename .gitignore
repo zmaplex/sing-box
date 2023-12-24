@@ -16,3 +16,6 @@
 /config.d/
 .env
 server.json
+
+*.crt
+*.pem
