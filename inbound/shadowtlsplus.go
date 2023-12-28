@@ -13,7 +13,7 @@ import (
 	"github.com/sagernet/sing/common/auth"
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
-	EU "github.com/zmaplex/sing-box-extend/edgesystem/users"
+	EC "github.com/zmaplex/sing-box-extend/edgesystem/constants"
 	shadowtls "github.com/zmaplex/sing-box-extend/shadowtls"
 )
 
@@ -57,7 +57,7 @@ func NewShadowTLSPlus(ctx context.Context, router adapter.Router, logger log.Con
 	if err != nil {
 		return nil, err
 	}
-	edgeAuthenticator := service.FromContext[EU.EdgeAuthenticator](ctx)
+	edgeAuthenticator := service.FromContext[EC.EdgeAuthenticator](ctx)
 	service, err := shadowtls.NewService(shadowtls.ServiceConfig{
 		Version:  options.Version,
 		Password: options.Password,
