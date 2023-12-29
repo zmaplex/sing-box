@@ -48,8 +48,9 @@ func New(ctx context.Context, router adapter.Router, logger log.ContextLogger, o
 		return NewShadowTLSPlus(ctx, router, logger, options.Tag, options.ShadowTLSOptions)
 	case C.TypeVLESS:
 		return NewVLESS(ctx, router, logger, options.Tag, options.VLESSOptions)
+	// 合并时保留此处
 	case C.TypeTUIC:
-		return NewTUIC(ctx, router, logger, options.Tag, options.TUICOptions)
+		return NewTUICPlus(ctx, router, logger, options.Tag, options.TUICOptions)
 	case C.TypeHysteria2:
 		return NewHysteria2(ctx, router, logger, options.Tag, options.Hysteria2Options)
 	default:
