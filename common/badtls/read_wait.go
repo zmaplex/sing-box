@@ -4,11 +4,8 @@ package badtls
 
 import (
 	"bytes"
-<<<<<<< HEAD
-=======
 	"context"
 	"net"
->>>>>>> origin/dev-next
 	"os"
 	"reflect"
 	"sync"
@@ -23,22 +20,6 @@ import (
 var _ N.ReadWaiter = (*ReadWaitConn)(nil)
 
 type ReadWaitConn struct {
-<<<<<<< HEAD
-	*tls.STDConn
-	halfAccess      *sync.Mutex
-	rawInput        *bytes.Buffer
-	input           *bytes.Reader
-	hand            *bytes.Buffer
-	readWaitOptions N.ReadWaitOptions
-}
-
-func NewReadWaitConn(conn tls.Conn) (tls.Conn, error) {
-	stdConn, isSTDConn := conn.(*tls.STDConn)
-	if !isSTDConn {
-		return nil, os.ErrInvalid
-	}
-	rawConn := reflect.Indirect(reflect.ValueOf(stdConn))
-=======
 	tls.Conn
 	halfAccess                    *sync.Mutex
 	rawInput                      *bytes.Buffer
@@ -65,7 +46,6 @@ func NewReadWaitConn(conn tls.Conn) (tls.Conn, error) {
 		return nil, os.ErrInvalid
 	}
 	rawConn := reflect.Indirect(reflect.ValueOf(conn))
->>>>>>> origin/dev-next
 	rawHalfConn := rawConn.FieldByName("in")
 	if !rawHalfConn.IsValid() || rawHalfConn.Kind() != reflect.Struct {
 		return nil, E.New("badtls: invalid half conn")
@@ -91,13 +71,6 @@ func NewReadWaitConn(conn tls.Conn) (tls.Conn, error) {
 	}
 	hand := (*bytes.Buffer)(unsafe.Pointer(rawHand.UnsafeAddr()))
 	return &ReadWaitConn{
-<<<<<<< HEAD
-		STDConn:    stdConn,
-		halfAccess: halfAccess,
-		rawInput:   rawInput,
-		input:      input,
-		hand:       hand,
-=======
 		Conn:                          conn,
 		halfAccess:                    halfAccess,
 		rawInput:                      rawInput,
@@ -105,7 +78,6 @@ func NewReadWaitConn(conn tls.Conn) (tls.Conn, error) {
 		hand:                          hand,
 		tlsReadRecord:                 tlsReadRecord,
 		tlsHandlePostHandshakeMessage: tlsHandlePostHandshakeMessage,
->>>>>>> origin/dev-next
 	}, nil
 }
 
@@ -115,31 +87,19 @@ func (c *ReadWaitConn) InitializeReadWaiter(options N.ReadWaitOptions) (needCopy
 }
 
 func (c *ReadWaitConn) WaitReadBuffer() (buffer *buf.Buffer, err error) {
-<<<<<<< HEAD
-	err = c.Handshake()
-=======
 	err = c.HandshakeContext(context.Background())
->>>>>>> origin/dev-next
 	if err != nil {
 		return
 	}
 	c.halfAccess.Lock()
 	defer c.halfAccess.Unlock()
 	for c.input.Len() == 0 {
-<<<<<<< HEAD
-		err = tlsReadRecord(c.STDConn)
-=======
 		err = c.tlsReadRecord()
->>>>>>> origin/dev-next
 		if err != nil {
 			return
 		}
 		for c.hand.Len() > 0 {
-<<<<<<< HEAD
-			err = tlsHandlePostHandshakeMessage(c.STDConn)
-=======
 			err = c.tlsHandlePostHandshakeMessage()
->>>>>>> origin/dev-next
 			if err != nil {
 				return
 			}
@@ -156,11 +116,7 @@ func (c *ReadWaitConn) WaitReadBuffer() (buffer *buf.Buffer, err error) {
 	if n != 0 && c.input.Len() == 0 && c.rawInput.Len() > 0 &&
 		// recordType(c.rawInput.Bytes()[0]) == recordTypeAlert {
 		c.rawInput.Bytes()[0] == 21 {
-<<<<<<< HEAD
-		_ = tlsReadRecord(c.STDConn)
-=======
 		_ = c.tlsReadRecord()
->>>>>>> origin/dev-next
 		// return n, err // will be io.EOF on closeNotify
 	}
 
@@ -168,13 +124,6 @@ func (c *ReadWaitConn) WaitReadBuffer() (buffer *buf.Buffer, err error) {
 	return
 }
 
-<<<<<<< HEAD
-//go:linkname tlsReadRecord crypto/tls.(*Conn).readRecord
-func tlsReadRecord(c *tls.STDConn) error
-
-//go:linkname tlsHandlePostHandshakeMessage crypto/tls.(*Conn).handlePostHandshakeMessage
-func tlsHandlePostHandshakeMessage(c *tls.STDConn) error
-=======
 var tlsRegistry []func(conn net.Conn) (loaded bool, tlsReadRecord func() error, tlsHandlePostHandshakeMessage func() error)
 
 func init() {
@@ -196,4 +145,3 @@ func stdTLSReadRecord(c *tls.STDConn) error
 
 //go:linkname stdTLSHandlePostHandshakeMessage crypto/tls.(*Conn).handlePostHandshakeMessage
 func stdTLSHandlePostHandshakeMessage(c *tls.STDConn) error
->>>>>>> origin/dev-next

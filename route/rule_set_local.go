@@ -20,19 +20,6 @@ type LocalRuleSet struct {
 }
 
 func NewLocalRuleSet(router adapter.Router, options option.RuleSet) (*LocalRuleSet, error) {
-<<<<<<< HEAD
-	setFile, err := os.Open(options.LocalOptions.Path)
-	if err != nil {
-		return nil, err
-	}
-	var plainRuleSet option.PlainRuleSet
-	switch options.Format {
-	case C.RuleSetFormatSource, "":
-		var compat option.PlainRuleSetCompat
-		decoder := json.NewDecoder(json.NewCommentFilter(setFile))
-		decoder.DisallowUnknownFields()
-		err = decoder.Decode(&compat)
-=======
 	var plainRuleSet option.PlainRuleSet
 	switch options.Format {
 	case C.RuleSetFormatSource, "":
@@ -41,19 +28,15 @@ func NewLocalRuleSet(router adapter.Router, options option.RuleSet) (*LocalRuleS
 			return nil, err
 		}
 		compat, err := json.UnmarshalExtended[option.PlainRuleSetCompat](content)
->>>>>>> origin/dev-next
 		if err != nil {
 			return nil, err
 		}
 		plainRuleSet = compat.Upgrade()
 	case C.RuleSetFormatBinary:
-<<<<<<< HEAD
-=======
 		setFile, err := os.Open(options.LocalOptions.Path)
 		if err != nil {
 			return nil, err
 		}
->>>>>>> origin/dev-next
 		plainRuleSet, err = srs.Read(setFile, false)
 		if err != nil {
 			return nil, err
@@ -62,10 +45,7 @@ func NewLocalRuleSet(router adapter.Router, options option.RuleSet) (*LocalRuleS
 		return nil, E.New("unknown rule set format: ", options.Format)
 	}
 	rules := make([]adapter.HeadlessRule, len(plainRuleSet.Rules))
-<<<<<<< HEAD
-=======
 	var err error
->>>>>>> origin/dev-next
 	for i, ruleOptions := range plainRuleSet.Rules {
 		rules[i], err = NewHeadlessRule(router, ruleOptions)
 		if err != nil {

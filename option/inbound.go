@@ -75,7 +75,6 @@ func (h *Inbound) RawOptions() (any, error) {
 	}
 	return rawOptionsPtr, nil
 }
-
 func (h Inbound) MarshalJSON() ([]byte, error) {
 	rawOptions, err := h.RawOptions()
 	if err != nil {
@@ -136,19 +135,6 @@ func (c *UDPTimeoutCompat) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 	return json.Unmarshal(data, (*Duration)(c))
-}
-
-type ListenOptionsWrapper interface {
-	TakeListenOptions() ListenOptions
-	ReplaceListenOptions(options ListenOptions)
-}
-
-func (o *ListenOptions) TakeListenOptions() ListenOptions {
-	return *o
-}
-
-func (o *ListenOptions) ReplaceListenOptions(options ListenOptions) {
-	*o = options
 }
 
 type ListenOptionsWrapper interface {
