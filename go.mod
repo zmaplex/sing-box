@@ -24,12 +24,12 @@ require (
 	github.com/sagernet/cloudflare-tls v0.0.0-20231208171750-a4483c1b7cd1
 	github.com/sagernet/gomobile v0.1.1
 	github.com/sagernet/gvisor v0.0.0-20231209105102-8d27a30e436e
-	github.com/sagernet/quic-go v0.40.0
+	github.com/sagernet/quic-go v0.40.1-beta.2
 	github.com/sagernet/reality v0.0.0-20230406110435-ee17307e7691
-	github.com/sagernet/sing v0.3.0-rc.5
+	github.com/sagernet/sing v0.3.0-rc.7.0.20240105061852-782bc05c5573
 	github.com/sagernet/sing-dns v0.1.12
-	github.com/sagernet/sing-mux v0.1.7-rc.1
-	github.com/sagernet/sing-quic v0.1.7-rc.1
+	github.com/sagernet/sing-mux v0.1.8-rc.1
+	github.com/sagernet/sing-quic v0.1.7-rc.2
 	github.com/sagernet/sing-shadowsocks v0.2.6
 	github.com/sagernet/sing-shadowsocks2 v0.1.6-rc.1
 	github.com/sagernet/sing-shadowtls v0.1.4
@@ -101,7 +101,7 @@ require (
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/exp v0.0.0-20231219180239-dc181d75b848 // indirect
+	golang.org/x/exp v0.0.0-20231226003508-02704c960a9b // indirect
 	golang.org/x/mod v0.14.0 // indirect
 	golang.org/x/sync v0.5.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
