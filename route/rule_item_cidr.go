@@ -35,9 +35,9 @@ func NewIPCIDRItem(isSource bool, prefixStrings []string) (*IPCIDRItem, error) {
 	}
 	var description string
 	if isSource {
-		description = "source_ipcidr="
+		description = "source_ip_cidr="
 	} else {
-		description = "ipcidr="
+		description = "ip_cidr="
 	}
 	if dLen := len(prefixStrings); dLen == 1 {
 		description += prefixStrings[0]
@@ -60,9 +60,9 @@ func NewIPCIDRItem(isSource bool, prefixStrings []string) (*IPCIDRItem, error) {
 func NewRawIPCIDRItem(isSource bool, ipSet *netipx.IPSet) *IPCIDRItem {
 	var description string
 	if isSource {
-		description = "source_ipcidr="
+		description = "source_ip_cidr="
 	} else {
-		description = "ipcidr="
+		description = "ip_cidr="
 	}
 	description += "<binary>"
 	return &IPCIDRItem{
@@ -73,7 +73,7 @@ func NewRawIPCIDRItem(isSource bool, ipSet *netipx.IPSet) *IPCIDRItem {
 }
 
 func (r *IPCIDRItem) Match(metadata *adapter.InboundContext) bool {
-	if r.isSource || metadata.QueryType != 0 || metadata.IPCIDRMatchSource {
+	if r.isSource || metadata.IPCIDRMatchSource {
 		return r.ipSet.Contains(metadata.Source.Addr)
 	} else {
 		if metadata.Destination.IsIP() {
