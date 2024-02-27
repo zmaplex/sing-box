@@ -26,8 +26,9 @@ func New(ctx context.Context, router adapter.Router, logger log.ContextLogger, o
 		return NewDirect(ctx, router, logger, options.Tag, options.DirectOptions), nil
 	case C.TypeSOCKS:
 		return NewSocks(ctx, router, logger, options.Tag, options.SocksOptions), nil
+	// 合并时保留此处
 	case C.TypeHTTP:
-		return NewHTTP(ctx, router, logger, options.Tag, options.HTTPOptions)
+		return NewHTTPPlus(ctx, router, logger, options.Tag, options.HTTPOptions)
 	case C.TypeMixed:
 		return NewMixed(ctx, router, logger, options.Tag, options.MixedOptions), nil
 	case C.TypeShadowsocks:
