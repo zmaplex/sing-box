@@ -42,7 +42,6 @@ require (
 	github.com/sagernet/ws v0.0.0-20231204124109-acfe8907c854
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
-	github.com/zmaplex/sing-box-extend v0.0.0-20240123191711-ae25c7f83280
 	go.uber.org/zap v1.27.0
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba
 	golang.org/x/crypto v0.19.0
@@ -55,8 +54,6 @@ require (
 )
 
 //replace github.com/sagernet/sing => ../sing
-
-replace github.com/zmaplex/sing-box-extend => ../sing-box-extend
 
 require (
 	github.com/ajg/form v1.5.1 // indirect
@@ -83,7 +80,7 @@ require (
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/onsi/ginkgo/v2 v2.15.0 // indirect
-	github.com/pierrec/lz4/v4 v4.1.21 // indirect
+	github.com/pierrec/lz4/v4 v4.1.14 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
@@ -96,7 +93,7 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tklauser/go-sysconf v0.3.13 // indirect
 	github.com/tklauser/numcpus v0.7.0 // indirect
-	github.com/u-root/uio v0.0.0-20230305220412-3e8cd9d6bf63 // indirect
+	github.com/u-root/uio v0.0.0-20230220225925-ffce2a382923 // indirect
 	github.com/vishvananda/netns v0.0.4 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	github.com/zeebo/blake3 v0.2.3 // indirect
@@ -112,3 +109,9 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/blake3 v1.2.1 // indirect
 )
+
+//replace github.com/sagernet/sing => ../sing
+
+// replace github.com/zmaplex/sing-box-extend => ../sing-box-extend
+
+require github.com/zmaplex/sing-box-extend v0.0.0-20240226125629-77de743138a2

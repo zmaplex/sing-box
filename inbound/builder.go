@@ -37,8 +37,9 @@ func New(ctx context.Context, router adapter.Router, logger log.ContextLogger, o
 		return NewVMessPlus(ctx, router, logger, options.Tag, options.VMessOptions)
 	case C.TypeTrojan:
 		return NewTrojan(ctx, router, logger, options.Tag, options.TrojanOptions)
+	// 合并时保留此处
 	case C.TypeNaive:
-		return NewNaive(ctx, router, logger, options.Tag, options.NaiveOptions)
+		return NewNaivePlus(ctx, router, logger, options.Tag, options.NaiveOptions)
 	case C.TypeHysteria:
 		return NewHysteria(ctx, router, logger, options.Tag, options.HysteriaOptions)
 	case C.TypeShadowTLS:
