@@ -8,7 +8,7 @@ import (
 
 	"github.com/sagernet/sing-box/adapter"
 	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-dns"
+	dns "github.com/sagernet/sing-dns"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/buf"
 	"github.com/sagernet/sing/common/bufio"
@@ -239,17 +239,11 @@ func (d *DNS) newPacketConnection(ctx context.Context, conn N.PacketConn, readWa
 					return err
 				}
 				timeout.Update()
-				var responseLen int
-				response, responseLen = dns.TruncateDNSMessage(&message, response)
-				responseBuffer := buf.NewSize(1024 + responseLen)
-				responseBuffer.Resize(1024, 0)
-				n, err := response.PackBuffer(responseBuffer.FreeBytes())
+				responseBuffer, err := dns.TruncateDNSMessage(&message, response, 1024)
 				if err != nil {
 					cancel(err)
-					responseBuffer.Release()
 					return err
 				}
-				responseBuffer.Truncate(len(n))
 				err = conn.WritePacket(responseBuffer, destination)
 				if err != nil {
 					cancel(err)

@@ -26,8 +26,8 @@ require (
 	github.com/sagernet/gvisor v0.0.0-20240214044702-a3d61928a32f
 	github.com/sagernet/quic-go v0.41.0-beta.2
 	github.com/sagernet/reality v0.0.0-20230406110435-ee17307e7691
-	github.com/sagernet/sing v0.3.3-beta.2
-	github.com/sagernet/sing-dns v0.2.0-beta.9
+	github.com/sagernet/sing v0.3.4-beta.1
+	github.com/sagernet/sing-dns v0.2.0-beta.13
 	github.com/sagernet/sing-mux v0.2.0
 	github.com/sagernet/sing-quic v0.1.9-beta.1
 	github.com/sagernet/sing-shadowsocks v0.2.6
@@ -98,12 +98,12 @@ require (
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/exp v0.0.0-20240205201215-2c58cdc269a3 // indirect
-	golang.org/x/mod v0.14.0 // indirect
+	golang.org/x/exp v0.0.0-20240222234643-814bf88cf225 // indirect
+	golang.org/x/mod v0.15.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
-	golang.org/x/tools v0.17.0 // indirect
+	golang.org/x/tools v0.18.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
