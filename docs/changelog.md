@@ -2,6 +2,18 @@
 icon: material/alert-decagram
 ---
 
+#### 1.9.0-rc.12
+
+* Fixes and improvements
+
+#### 1.8.12
+
+* Fixes and improvements
+
+**1**:
+
+Including stable and beta versions, see https://sing-box.sagernet.org/installation/package-manager/
+
 #### 1.9.0-rc.11
 
 * Fixes and improvements
