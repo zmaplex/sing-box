@@ -82,6 +82,10 @@ func (s *platformInterfaceStub) UnderNetworkExtension() bool {
 	return false
 }
 
+func (s *platformInterfaceStub) IncludeAllNetworks() bool {
+	return false
+}
+
 func (s *platformInterfaceStub) ClearDNSCache() {
 }
 
@@ -136,7 +140,6 @@ func FormatConfig(configContent string) (string, error) {
 		return "", err
 	}
 	var buffer bytes.Buffer
-	json.NewEncoder(&buffer)
 	encoder := json.NewEncoder(&buffer)
 	encoder.SetIndent("", "  ")
 	err = encoder.Encode(options)
