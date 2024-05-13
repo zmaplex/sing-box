@@ -241,7 +241,7 @@ func NewRouter(
 					return nil, E.New("parse dns server[", tag, "]: missing address_resolver")
 				}
 			}
-			var clientSubnet netip.Addr
+			var clientSubnet netip.Prefix
 			if server.ClientSubnet != nil {
 				clientSubnet = server.ClientSubnet.Build()
 			} else if dnsOptions.ClientSubnet != nil {
