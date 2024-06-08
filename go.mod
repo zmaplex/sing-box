@@ -27,7 +27,7 @@ require (
 	github.com/sagernet/quic-go v0.45.0-beta.1
 	github.com/sagernet/reality v0.0.0-20230406110435-ee17307e7691
 	github.com/sagernet/sing v0.5.0-alpha.9
-	github.com/sagernet/sing-dns v0.3.0-beta.2
+	github.com/sagernet/sing-dns v0.3.0-beta.4
 	github.com/sagernet/sing-mux v0.2.0
 	github.com/sagernet/sing-quic v0.2.0-beta.8
 	github.com/sagernet/sing-shadowsocks v0.2.6
@@ -64,7 +64,6 @@ require (
 	github.com/eclipse/paho.mqtt.golang v1.4.3 // indirect
 	github.com/gaukas/godicttls v0.0.4 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
-	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
@@ -72,7 +71,7 @@ require (
 	github.com/google/btree v1.1.2 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/pprof v0.0.0-20240528025155-186aa0362fba // indirect
-	github.com/gorilla/websocket v1.5.1 // indirect
+	github.com/gorilla/websocket v1.5.2 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
