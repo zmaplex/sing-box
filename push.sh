@@ -2,5 +2,5 @@
 #  git submodule update
 #  git submodule foreach git checkout main
 #  git submodule foreach git pull
-CGO_ENABLED=0 go build -v -trimpath -ldflags "-X 'github.com/sagernet/sing-box/constant.Version=1.9.0-pro.2' -s -w -buildid=" -tags with_dhcp,with_quic,with_ech ./cmd/sing-box
+CGO_ENABLED=0 go build -v -trimpath -ldflags "-X 'github.com/sagernet/sing-box/constant.Version=1.9.1-pro.0' -s -w -buildid=" -tags with_dhcp,with_quic,with_ech ./cmd/sing-box
 aws s3 cp sing-box s3://$S3_SING_BOX_BUCKET --acl public-read --endpoint-url https://s3-accelerate.amazonaws.com
