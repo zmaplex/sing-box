@@ -90,7 +90,6 @@ require (
 	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
 	github.com/sagernet/netlink v0.0.0-20240612041022-b9a21c07ac6a // indirect
 	github.com/sagernet/nftables v0.3.0-beta.4 // indirect
-	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tidwall/gjson v1.17.1 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
