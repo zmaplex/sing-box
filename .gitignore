@@ -14,9 +14,12 @@
 /*.xcframework/
 .DS_Store
 /config.d/
+/venv/
+
+
+
 .env
 server.json
-
 .tmp
 *.crt
 *.pem

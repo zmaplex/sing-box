@@ -5,7 +5,7 @@ go 1.21.0
 require (
 	berty.tech/go-libtor v1.0.385
 	github.com/caddyserver/certmagic v0.21.3
-	github.com/cloudflare/circl v1.3.8
+	github.com/cloudflare/circl v1.3.9
 	github.com/cretz/bine v0.2.0
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/go-chi/chi/v5 v5.0.12
@@ -17,7 +17,7 @@ require (
 	github.com/libdns/cloudflare v0.1.1
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/mholt/acmez v1.2.0
-	github.com/miekg/dns v1.1.59
+	github.com/miekg/dns v1.1.61
 	github.com/ooni/go-libtor v1.1.8
 	github.com/oschwald/maxminddb-golang v1.13.0
 	github.com/sagernet/bbolt v0.0.0-20231014093535-ea5cb2fe9f0a
@@ -26,14 +26,14 @@ require (
 	github.com/sagernet/gvisor v0.0.0-20240428053021-e691de28565f
 	github.com/sagernet/quic-go v0.45.0-beta.2
 	github.com/sagernet/reality v0.0.0-20230406110435-ee17307e7691
-	github.com/sagernet/sing v0.5.0-alpha.9
+	github.com/sagernet/sing v0.5.0-alpha.11
 	github.com/sagernet/sing-dns v0.3.0-beta.5
 	github.com/sagernet/sing-mux v0.2.0
 	github.com/sagernet/sing-quic v0.2.0-beta.9
 	github.com/sagernet/sing-shadowsocks v0.2.6
 	github.com/sagernet/sing-shadowsocks2 v0.2.0
 	github.com/sagernet/sing-shadowtls v0.1.4
-	github.com/sagernet/sing-tun v0.4.0-beta.8
+	github.com/sagernet/sing-tun v0.4.0-beta.9.0.20240616073727-85f5f2dd587d
 	github.com/sagernet/sing-vmess v0.1.8
 	github.com/sagernet/smux v0.0.0-20231208180855-7041f6ea79e7
 	github.com/sagernet/tfo-go v0.0.0-20231209031829-7b5343ac1dc6
@@ -49,7 +49,7 @@ require (
 	golang.org/x/sys v0.21.0
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20230429144221-925a1e7659e6
 	google.golang.org/grpc v1.64.0
-	google.golang.org/protobuf v1.34.1
+	google.golang.org/protobuf v1.34.2
 	howett.net/plist v1.0.1
 )
 
@@ -70,14 +70,14 @@ require (
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/google/btree v1.1.2 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
-	github.com/google/pprof v0.0.0-20240528025155-186aa0362fba // indirect
-	github.com/gorilla/websocket v1.5.2 // indirect
+	github.com/google/pprof v0.0.0-20240618054019-d3b898a103f8 // indirect
+	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/josharian/native v1.1.0 // indirect
-	github.com/klauspost/compress v1.17.8 // indirect
-	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
+	github.com/klauspost/compress v1.17.9 // indirect
+	github.com/klauspost/cpuid/v2 v2.2.8 // indirect
 	github.com/libdns/libdns v0.2.2 // indirect
 	github.com/mdlayher/netlink v1.7.2 // indirect
 	github.com/mdlayher/socket v0.5.1 // indirect
@@ -88,8 +88,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
-	github.com/sagernet/netlink v0.0.0-20240523065131-45e60152f9ba // indirect
-	github.com/sagernet/nftables v0.3.0-beta.2 // indirect
+	github.com/sagernet/netlink v0.0.0-20240612041022-b9a21c07ac6a // indirect
+	github.com/sagernet/nftables v0.3.0-beta.4 // indirect
 	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tidwall/gjson v1.17.1 // indirect
@@ -102,13 +102,13 @@ require (
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/exp v0.0.0-20240604190554-fc45aab8b7f8 // indirect
+	golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8 // indirect
 	golang.org/x/mod v0.18.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.22.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240604185151-ef581f913117 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240617180043-68d350f18fd4 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/blake3 v1.3.0 // indirect
@@ -118,4 +118,4 @@ require (
 
 // replace github.com/zmaplex/sing-box-extend => ../sing-box-extend
 
-require github.com/zmaplex/sing-box-extend v0.0.0-20240609110526-d870a0773bf1
+require github.com/zmaplex/sing-box-extend v0.0.0-20240617061242-4155699a03c6

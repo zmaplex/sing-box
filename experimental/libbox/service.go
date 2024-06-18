@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sagernet/sing-box"
+	box "github.com/sagernet/sing-box"
 	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing-box/common/process"
 	"github.com/sagernet/sing-box/common/urltest"
@@ -18,7 +18,7 @@ import (
 	"github.com/sagernet/sing-box/experimental/libbox/platform"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing-tun"
+	tun "github.com/sagernet/sing-tun"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/control"
 	E "github.com/sagernet/sing/common/exceptions"
@@ -149,33 +149,6 @@ func (w *platformInterfaceWrapper) OpenTun(options *tun.Options, platformOptions
 	return tun.New(*options)
 }
 
-func (w *platformInterfaceWrapper) FindProcessInfo(ctx context.Context, network string, source netip.AddrPort, destination netip.AddrPort) (*process.Info, error) {
-	var uid int32
-	if w.useProcFS {
-		uid = procfs.ResolveSocketByProcSearch(network, source, destination)
-		if uid == -1 {
-			return nil, E.New("procfs: not found")
-		}
-	} else {
-		var ipProtocol int32
-		switch N.NetworkName(network) {
-		case N.NetworkTCP:
-			ipProtocol = syscall.IPPROTO_TCP
-		case N.NetworkUDP:
-			ipProtocol = syscall.IPPROTO_UDP
-		default:
-			return nil, E.New("unknown network: ", network)
-		}
-		var err error
-		uid, err = w.iif.FindConnectionOwner(ipProtocol, source.Addr().String(), int32(source.Port()), destination.Addr().String(), int32(destination.Port()))
-		if err != nil {
-			return nil, err
-		}
-	}
-	packageName, _ := w.iif.PackageNameByUid(uid)
-	return &process.Info{UserId: uid, PackageName: packageName}, nil
-}
-
 func (w *platformInterfaceWrapper) UsePlatformDefaultInterfaceMonitor() bool {
 	return w.iif.UsePlatformDefaultInterfaceMonitor()
 }
@@ -229,16 +202,31 @@ func (w *platformInterfaceWrapper) ReadWIFIState() adapter.WIFIState {
 	return (adapter.WIFIState)(*wifiState)
 }
 
-func (w *platformInterfaceWrapper) PerAppProxyList() ([]uint32, error) {
-	uidIterator, err := w.iif.PerAppProxyList()
-	if err != nil {
-		return nil, err
+func (w *platformInterfaceWrapper) FindProcessInfo(ctx context.Context, network string, source netip.AddrPort, destination netip.AddrPort) (*process.Info, error) {
+	var uid int32
+	if w.useProcFS {
+		uid = procfs.ResolveSocketByProcSearch(network, source, destination)
+		if uid == -1 {
+			return nil, E.New("procfs: not found")
+		}
+	} else {
+		var ipProtocol int32
+		switch N.NetworkName(network) {
+		case N.NetworkTCP:
+			ipProtocol = syscall.IPPROTO_TCP
+		case N.NetworkUDP:
+			ipProtocol = syscall.IPPROTO_UDP
+		default:
+			return nil, E.New("unknown network: ", network)
+		}
+		var err error
+		uid, err = w.iif.FindConnectionOwner(ipProtocol, source.Addr().String(), int32(source.Port()), destination.Addr().String(), int32(destination.Port()))
+		if err != nil {
+			return nil, err
+		}
 	}
-	return common.Map(iteratorToArray[int32](uidIterator), func(it int32) uint32 { return uint32(it) }), nil
-}
-
-func (w *platformInterfaceWrapper) PerAppProxyMode() int32 {
-	return w.iif.PerAppProxyMode()
+	packageName, _ := w.iif.PackageNameByUid(uid)
+	return &process.Info{UserId: uid, PackageName: packageName}, nil
 }
 
 func (w *platformInterfaceWrapper) DisableColors() bool {
