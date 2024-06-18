@@ -1,6 +1,5 @@
-response=$(curl --socks5 127.0.0.1:1080 -o /dev/null -s -w "%{http_code}\n" https://android.chat.openai.com)
-echo "$response https://android.chat.openai.com"
-if [ "$response" -ne 403 ]; then
+# 2404:c140
+if ! curl -s https://android.chat.openai.com/cdn-cgi/trace | grep -q "2404:c140"; then
     echo "openai is locked"
     exit 1
 fi
