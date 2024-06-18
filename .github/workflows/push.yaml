@@ -16,6 +16,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         go-version: 1.21.11
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build
       run: |
