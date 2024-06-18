@@ -12,7 +12,7 @@ jobs:
     - name: Init
       run: |
         echo -e "machine github.com\nlogin zmaplex\npassword ${{secrets.MY_GITHUB_TOKEN}}" > ~/.netrc
-        mkdir -p /etc/sing-box-pro
+        sudo mkdir -p /etc/sing-box-pro
         curl ${{secrets.SING_BOX_PRO_CONFIG_URL}} -o /etc/sing-box-pro/server.json
 
     - name: Checkout code
@@ -39,7 +39,7 @@ jobs:
     - name: Check Netflix response
       run: |
         chmod a+x sing-box
-        ./sing-box run -c /etc/sing-box-pro/server.json &
+        sudo ./sing-box run -c /etc/sing-box-pro/server.json &
         response=$(curl -o /dev/null -s -w "%{http_code}\n" https://www.netflix.com/sg-zh/title/70143836)
         if [ "$response" -ne 200 ]; then
             echo "Error: HTTP response is not 200"
