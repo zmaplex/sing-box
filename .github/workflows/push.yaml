@@ -44,7 +44,7 @@ jobs:
       run: |
         chmod a+x sing-box
         mv sing-box /usr/local/bin
-        mv unlock_test.sh /etc/sing-box-pro
+        sudo mv unlock_test.sh /etc/sing-box-pro
         cd /etc/sing-box-pro && sudo sing-box run -c server.json &
         sleep 20
         sudo ./unlock_test.sh || exit 1
