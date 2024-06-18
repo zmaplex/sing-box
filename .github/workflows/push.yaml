@@ -43,12 +43,12 @@ jobs:
     - name: Unlock Test
       run: |
         chmod a+x sing-box
-        mv sing-box /usr/local/bin
+        cp sing-box /usr/local/bin
         cd /etc/sing-box-pro && sudo sing-box run -c server.json &
         sleep 20
         sudo chmod +x ${{ github.workspace }}/.github/workflows/unlock_test.sh  
         sudo ${{ github.workspace }}/.github/workflows/unlock_test.sh || exit 1
-        kill -9 $(ps aux | grep '[s]ing-box' | awk '{print $2}')
+        sudo kill -9 $(ps aux | grep '[s]ing-box' | awk '{print $2}')
 
     - name: Copy files to S3 with the AWS CLI
       run: |
