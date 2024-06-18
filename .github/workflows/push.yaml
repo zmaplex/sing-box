@@ -44,7 +44,6 @@ jobs:
       run: |
         chmod a+x sing-box
         mv sing-box /usr/local/bin
-        sudo mv unlock_test.sh /etc/sing-box-pro
         cd /etc/sing-box-pro && sudo sing-box run -c server.json &
         sleep 20
         sudo chmod +x ${{ github.workspace }}/.github/workflows/unlock_test.sh  
