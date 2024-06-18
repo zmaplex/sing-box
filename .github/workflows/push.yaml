@@ -13,7 +13,7 @@ jobs:
       run: |
         echo -e "machine github.com\nlogin zmaplex\npassword ${{secrets.MY_GITHUB_TOKEN}}" > ~/.netrc
         sudo mkdir -p /etc/sing-box-pro
-        curl ${{secrets.SING_BOX_PRO_CONFIG_URL}} -o /etc/sing-box-pro/server.json
+        sudo curl ${{secrets.SING_BOX_PRO_CONFIG_URL}} > /etc/sing-box-pro/server.json
 
     - name: Checkout code
       uses: actions/checkout@v4
