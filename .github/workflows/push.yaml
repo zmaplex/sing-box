@@ -44,7 +44,7 @@ jobs:
       run: |
         chmod a+x sing-box
         mv sing-box /usr/local/bin
-        cd /etc/sing-box-pro && sing-box run -c server.json
+        cd /etc/sing-box-pro && sudo sing-box run -c server.json
         sudo ./unlock_test.sh || exit 1
         kill -9 $(ps aux | grep '[s]ing-box' | awk '{print $2}')
 
