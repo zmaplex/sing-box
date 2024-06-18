@@ -47,8 +47,8 @@ jobs:
         sudo mv unlock_test.sh /etc/sing-box-pro
         cd /etc/sing-box-pro && sudo sing-box run -c server.json &
         sleep 20
-        sudo chmod +x ${{ github.workspace }}/unlock_test.sh
-        sudo ${{ github.workspace }}/unlock_test.sh || exit 1 
+        sudo chmod +x ${{ github.workspace }}/.github/workflows/unlock_test.sh  
+        sudo ${{ github.workspace }}/.github/workflows/unlock_test.sh || exit 1
         kill -9 $(ps aux | grep '[s]ing-box' | awk '{print $2}')
 
     - name: Copy files to S3 with the AWS CLI
