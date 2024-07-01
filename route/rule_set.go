@@ -47,24 +47,6 @@ func extractIPSetFromRule(rawRule adapter.HeadlessRule) []*netipx.IPSet {
 	}
 }
 
-func extractIPSetFromRule(rawRule adapter.HeadlessRule) []*netipx.IPSet {
-	switch rule := rawRule.(type) {
-	case *DefaultHeadlessRule:
-		return common.FlatMap(rule.destinationIPCIDRItems, func(rawItem RuleItem) []*netipx.IPSet {
-			switch item := rawItem.(type) {
-			case *IPCIDRItem:
-				return []*netipx.IPSet{item.ipSet}
-			default:
-				return nil
-			}
-		})
-	case *LogicalHeadlessRule:
-		return common.FlatMap(rule.rules, extractIPSetFromRule)
-	default:
-		panic("unexpected rule type")
-	}
-}
-
 var _ adapter.RuleSetStartContext = (*RuleSetStartContext)(nil)
 
 type RuleSetStartContext struct {
