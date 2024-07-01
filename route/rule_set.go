@@ -20,12 +20,30 @@ import (
 
 func NewRuleSet(ctx context.Context, router adapter.Router, logger logger.ContextLogger, options option.RuleSet) (adapter.RuleSet, error) {
 	switch options.Type {
-	case C.RuleSetTypeLocal:
-		return NewLocalRuleSet(router, options)
+	case C.RuleSetTypeInline, C.RuleSetTypeLocal, "":
+		return NewLocalRuleSet(router, logger, options)
 	case C.RuleSetTypeRemote:
 		return NewRemoteRuleSet(ctx, router, logger, options), nil
 	default:
-		return nil, E.New("unknown rule set type: ", options.Type)
+		return nil, E.New("unknown rule-set type: ", options.Type)
+	}
+}
+
+func extractIPSetFromRule(rawRule adapter.HeadlessRule) []*netipx.IPSet {
+	switch rule := rawRule.(type) {
+	case *DefaultHeadlessRule:
+		return common.FlatMap(rule.destinationIPCIDRItems, func(rawItem RuleItem) []*netipx.IPSet {
+			switch item := rawItem.(type) {
+			case *IPCIDRItem:
+				return []*netipx.IPSet{item.ipSet}
+			default:
+				return nil
+			}
+		})
+	case *LogicalHeadlessRule:
+		return common.FlatMap(rule.rules, extractIPSetFromRule)
+	default:
+		panic("unexpected rule type")
 	}
 }
 

@@ -141,11 +141,11 @@ func NewTun(ctx context.Context, router adapter.Router, logger log.ContextLogger
 	if ruleIndex == 0 {
 		ruleIndex = tun.DefaultIPRoute2RuleIndex
 	}
-	inputMark := options.AutoRedirectInputMark
+	inputMark := uint32(options.AutoRedirectInputMark)
 	if inputMark == 0 {
 		inputMark = tun.DefaultAutoRedirectInputMark
 	}
-	outputMark := options.AutoRedirectOutputMark
+	outputMark := uint32(options.AutoRedirectOutputMark)
 	if outputMark == 0 {
 		outputMark = tun.DefaultAutoRedirectOutputMark
 	}
@@ -311,7 +311,7 @@ func (t *Tun) Start() error {
 		forwarderBindInterface = true
 		includeAllNetworks = t.platformInterface.IncludeAllNetworks()
 	}
-	t.tunStack, err = tun.NewStack(t.stack, tun.StackOptions{
+	tunStack, err := tun.NewStack(t.stack, tun.StackOptions{
 		Context:                t.ctx,
 		Tun:                    tunInterface,
 		TunOptions:             t.tunOptions,
@@ -327,8 +327,9 @@ func (t *Tun) Start() error {
 		return err
 	}
 	monitor.Start("initiating tun stack")
-	err = t.tunStack.Start()
+	err = tunStack.Start()
 	monitor.Finish()
+	t.tunStack = tunStack
 	if err != nil {
 		return err
 	}
