@@ -119,4 +119,4 @@ require (
 
 // replace github.com/zmaplex/sing-box-extend => ../sing-box-extend
 
-require github.com/zmaplex/sing-box-extend v0.0.0-20240716075541-53bcbd5bcb47
+require github.com/zmaplex/sing-box-extend v0.0.0-20240716083211-f9f2b2246461

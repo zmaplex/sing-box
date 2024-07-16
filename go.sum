@@ -207,6 +207,8 @@ github.com/zmaplex/sing-box-extend v0.0.0-20240701114943-8eb0dba78a6b h1:qsZE2ro
 github.com/zmaplex/sing-box-extend v0.0.0-20240701114943-8eb0dba78a6b/go.mod h1:PQBFAnhJPReaWu5MLIKP99iJIUEEffWk0p7cclV98SQ=
 github.com/zmaplex/sing-box-extend v0.0.0-20240716075541-53bcbd5bcb47 h1:L+gDQZi0qP9vS2osxgEq+NI9l/7/+VdPEvbnCJUse/k=
 github.com/zmaplex/sing-box-extend v0.0.0-20240716075541-53bcbd5bcb47/go.mod h1:6JHi9YM7dS5NtdpfwXJAyk+m3yBaRwe5Vy/t6ZcdEX0=
+github.com/zmaplex/sing-box-extend v0.0.0-20240716083211-f9f2b2246461 h1:EaCY+UJS4u/+Wz+x+fdE3PetXwznSvgsPjpolD3YSvc=
+github.com/zmaplex/sing-box-extend v0.0.0-20240716083211-f9f2b2246461/go.mod h1:6JHi9YM7dS5NtdpfwXJAyk+m3yBaRwe5Vy/t6ZcdEX0=
 go.uber.org/goleak v1.3.0 h1:2K3zAYmnTNqV73imy9J1T3WC+gmCePx2hEGkimedGto=
 go.uber.org/goleak v1.3.0/go.mod h1:CoHD4mav9JJNrW/WLlf7HGZPjdw8EucARQHekz1X6bE=
 go.uber.org/multierr v1.11.0 h1:blXXJkSxSSfBVBlC76pxqeO+LN3aDfLQo+309xJstO0=
