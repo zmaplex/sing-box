@@ -16,7 +16,7 @@ import (
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
 	EC "github.com/zmaplex/sing-box-extend/edgesystem/constants"
-	tuic "github.com/zmaplex/sing-box-extend/tuic"
+	tuic "github.com/zmaplex/sing-box-extend/inbound/tuic"
 )
 
 var _ adapter.Inbound = (*TUICPlus)(nil)

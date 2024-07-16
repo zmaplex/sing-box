@@ -14,7 +14,7 @@ import (
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
 	EC "github.com/zmaplex/sing-box-extend/edgesystem/constants"
-	shadowtls "github.com/zmaplex/sing-box-extend/shadowtls"
+	shadowtls "github.com/zmaplex/sing-box-extend/inbound/shadowtls"
 )
 
 type ShadowTLSPlus struct {

@@ -23,7 +23,7 @@ import (
 	"github.com/sagernet/sing/common/ntp"
 	"github.com/sagernet/sing/service"
 	EC "github.com/zmaplex/sing-box-extend/edgesystem/constants"
-	vmess "github.com/zmaplex/sing-box-extend/vmess"
+	vmess "github.com/zmaplex/sing-box-extend/inbound/vmess"
 )
 
 var (

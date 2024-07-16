@@ -18,7 +18,7 @@ import (
 	E "github.com/sagernet/sing/common/exceptions"
 	N "github.com/sagernet/sing/common/network"
 	EC "github.com/zmaplex/sing-box-extend/edgesystem/constants"
-	"github.com/zmaplex/sing-box-extend/http"
+	"github.com/zmaplex/sing-box-extend/inbound/http"
 )
 
 var (
