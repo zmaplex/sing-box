@@ -21,16 +21,16 @@ import (
 	N "github.com/sagernet/sing/common/network"
 )
 
-var _ adapter.Inbound = (*Hysteria2)(nil)
+var _ adapter.Inbound = (*Hysteria2Plus)(nil)
 
-type Hysteria2 struct {
+type Hysteria2Plus struct {
 	myInboundAdapter
 	tlsConfig    tls.ServerConfig
 	service      *hysteria2.Service[int]
 	userNameList []string
 }
 
-func NewHysteria2Plus(ctx context.Context, router adapter.Router, logger log.ContextLogger, tag string, options option.Hysteria2InboundOptions) (*Hysteria2, error) {
+func NewHysteria2Plus(ctx context.Context, router adapter.Router, logger log.ContextLogger, tag string, options option.Hysteria2InboundOptions) (*Hysteria2Plus, error) {
 	options.UDPFragmentDefault = true
 	if options.TLS == nil || !options.TLS.Enabled {
 		return nil, C.ErrTLSRequired
@@ -74,7 +74,7 @@ func NewHysteria2Plus(ctx context.Context, router adapter.Router, logger log.Con
 			return nil, E.New("unknown masquerade URL scheme: ", masqueradeURL.Scheme)
 		}
 	}
-	inbound := &Hysteria2{
+	inbound := &Hysteria2Plus{
 		myInboundAdapter: myInboundAdapter{
 			protocol:      C.TypeHysteria2,
 			network:       []string{N.NetworkUDP},
@@ -122,7 +122,7 @@ func NewHysteria2Plus(ctx context.Context, router adapter.Router, logger log.Con
 	return inbound, nil
 }
 
-func (h *Hysteria2) newConnection(ctx context.Context, conn net.Conn, metadata adapter.InboundContext) error {
+func (h *Hysteria2Plus) newConnection(ctx context.Context, conn net.Conn, metadata adapter.InboundContext) error {
 	ctx = log.ContextWithNewID(ctx)
 	metadata = h.createMetadata(conn, metadata)
 	h.logger.InfoContext(ctx, "inbound connection from ", metadata.Source)
@@ -136,7 +136,7 @@ func (h *Hysteria2) newConnection(ctx context.Context, conn net.Conn, metadata a
 	return h.router.RouteConnection(ctx, conn, metadata)
 }
 
-func (h *Hysteria2) newPacketConnection(ctx context.Context, conn N.PacketConn, metadata adapter.InboundContext) error {
+func (h *Hysteria2Plus) newPacketConnection(ctx context.Context, conn N.PacketConn, metadata adapter.InboundContext) error {
 	ctx = log.ContextWithNewID(ctx)
 	metadata = h.createPacketMetadata(conn, metadata)
 	h.logger.InfoContext(ctx, "inbound packet connection from ", metadata.Source)
@@ -150,7 +150,7 @@ func (h *Hysteria2) newPacketConnection(ctx context.Context, conn N.PacketConn, 
 	return h.router.RoutePacketConnection(ctx, conn, metadata)
 }
 
-func (h *Hysteria2) Start() error {
+func (h *Hysteria2Plus) Start() error {
 	if h.tlsConfig != nil {
 		err := h.tlsConfig.Start()
 		if err != nil {
@@ -164,7 +164,7 @@ func (h *Hysteria2) Start() error {
 	return h.service.Start(packetConn)
 }
 
-func (h *Hysteria2) Close() error {
+func (h *Hysteria2Plus) Close() error {
 	return common.Close(
 		&h.myInboundAdapter,
 		h.tlsConfig,
