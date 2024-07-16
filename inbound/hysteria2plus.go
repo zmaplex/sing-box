@@ -111,14 +111,6 @@ func NewHysteria2Plus(ctx context.Context, router adapter.Router, logger log.Con
 	if err != nil {
 		return nil, err
 	}
-	userList := make([]int, 0, len(options.Users))
-	userNameList := make([]string, 0, len(options.Users))
-	userPasswordList := make([]string, 0, len(options.Users))
-	for index, user := range options.Users {
-		userList = append(userList, index)
-		userNameList = append(userNameList, user.Name)
-		userPasswordList = append(userPasswordList, user.Password)
-	}
 	service.UpdateUsers()
 	inbound.service = service
 	return inbound, nil

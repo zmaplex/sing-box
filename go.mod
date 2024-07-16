@@ -42,6 +42,7 @@ require (
 	github.com/sagernet/ws v0.0.0-20231204124109-acfe8907c854
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
+	github.com/zmaplex/sing-box-extend v0.0.0-20240716094826-1e641e9505c6
 	go.uber.org/zap v1.27.0
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba
 	golang.org/x/crypto v0.25.0
@@ -118,5 +119,3 @@ require (
 //replace github.com/sagernet/sing => ../sing
 
 // replace github.com/zmaplex/sing-box-extend => ../sing-box-extend
-
-require github.com/zmaplex/sing-box-extend v0.0.0-20240716083211-f9f2b2246461
