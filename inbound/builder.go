@@ -53,8 +53,9 @@ func New(ctx context.Context, router adapter.Router, logger log.ContextLogger, t
 	// 合并时保留此处
 	case C.TypeTUIC:
 		return NewTUICPlus(ctx, router, logger, tag, options.TUICOptions)
+	// 合并时保留此处
 	case C.TypeHysteria2:
-		return NewHysteria2(ctx, router, logger, tag, options.Hysteria2Options)
+		return NewHysteria2Plus(ctx, router, logger, tag, options.Hysteria2Options)
 	default:
 		return nil, E.New("unknown inbound type: ", options.Type)
 	}
