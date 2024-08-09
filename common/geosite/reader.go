@@ -61,6 +61,7 @@ func (r *Reader) readMetadata() error {
 	if err != nil {
 		return err
 	}
+	keys := make([]string, entryLength)
 	domainIndex := make(map[string]int)
 	domainLength := make(map[string]int)
 	for i := 0; i < int(entryLength); i++ {
