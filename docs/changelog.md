@@ -2,9 +2,43 @@
 icon: material/alert-decagram
 ---
 
-#### 1.10.0-alpha.21
+#### 1.10.0-alpha.29
 
+* Update quic-go to v0.46.0
 * Fixes and improvements
+
+#### 1.10.0-alpha.25
+
+* Add AdGuard DNS Filter support **1**
+
+**1**:
+
+The new feature allows you to use AdGuard DNS Filter lists in a sing-box without AdGuard Home. 
+
+See [AdGuard DNS Filter](/configuration/rule-set/adguard/).
+
+#### 1.10.0-alpha.23
+
+* Add Chromium support for QUIC sniffer
+* Add client type detect support for QUIC sniffer **1**
+* Fixes and improvements
+
+**1**:
+
+Now the QUIC sniffer can correctly extract the server name from Chromium requests and
+can identify common QUIC clients, including
+Chromium, Safari, Firefox, quic-go (including uquic disguised as Chrome).
+
+See [Protocol Sniff](/configuration/route/sniff/) and [Route Rule](/configuration/route/rule/#client).
+
+#### 1.10.0-alpha.22
+
+* Optimize memory usages of rule-sets **1**
+* Fixes and improvements
+
+**1**:
+
+See [Source Format](/configuration/rule-set/source-format/#version).
 
 #### 1.10.0-alpha.20
 
