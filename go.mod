@@ -39,7 +39,7 @@ require (
 	github.com/sagernet/sing-tun v0.4.0-beta.16
 	github.com/sagernet/sing-vmess v0.1.12
 	github.com/sagernet/smux v0.0.0-20231208180855-7041f6ea79e7
-	github.com/sagernet/utls v1.5.4
+	github.com/sagernet/utls v1.6.7
 	github.com/sagernet/wireguard-go v0.0.0-20231215174105-89dec3b2f3e8
 	github.com/sagernet/ws v0.0.0-20231204124109-acfe8907c854
 	github.com/spf13/cobra v1.8.0
@@ -67,7 +67,6 @@ require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/eclipse/paho.mqtt.golang v1.5.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
-	github.com/gaukas/godicttls v0.0.4 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
