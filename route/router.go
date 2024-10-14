@@ -344,6 +344,7 @@ func NewRouter(
 				_ = router.interfaceFinder.Update()
 			})
 			interfaceMonitor, err := tun.NewDefaultInterfaceMonitor(router.networkMonitor, router.logger, tun.DefaultInterfaceMonitorOptions{
+				InterfaceFinder:       router.interfaceFinder,
 				OverrideAndroidVPN:    options.OverrideAndroidVPN,
 				UnderNetworkExtension: platformInterface != nil && platformInterface.UnderNetworkExtension(),
 			})
@@ -1039,16 +1040,14 @@ func (r *Router) RoutePacketConnection(ctx context.Context, conn N.PacketConn, m
 						)
 					} else {
 						err = sniff.PeekPacket(
-							ctx,
-							&metadata,
+							ctx, &metadata,
 							buffer.Bytes(),
 							sniff.DomainNameQuery,
 							sniff.QUICClientHello,
 							sniff.STUNMessage,
 							sniff.UTP,
 							sniff.UDPTracker,
-							sniff.DTLSRecord,
-						)
+							sniff.DTLSRecord)
 					}
 					if E.IsMulti(err, sniff.ErrClientHelloFragmented) && len(bufferList) == 0 {
 						bufferList = append(bufferList, buffer)
